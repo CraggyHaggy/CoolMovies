@@ -16,11 +16,13 @@ ext {
     rxAndroid = '2.1.1'
     retrofit = '2.5.0'
     loggingInterceptor = '3.11.0'
+    room = '2.2.0-rc01'
 
     kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     kapt = [
             moxy     : "com.arello-mobile:moxy-compiler:$moxy",
-            toothpick: "com.github.stephanenicolas.toothpick:toothpick-compiler:$toothpick"
+            toothpick: "com.github.stephanenicolas.toothpick:toothpick-compiler:$toothpick",
+            room:"androidx.room:room-compiler:$room"
     ]
 
     androidX = [
@@ -50,4 +52,8 @@ ext {
             rxAdapter         : "com.squareup.retrofit2:adapter-rxjava2:$retrofit",
             loggingInterceptor: "com.squareup.okhttp3:logging-interceptor:$loggingInterceptor"
     ] // Transitively contains Gson (2.8.2) version.
+    room = [
+            core: "androidx.room:room-runtime:$room",
+            rxAdapter: "androidx.room:room-rxjava2:$room"
+    ]
 }

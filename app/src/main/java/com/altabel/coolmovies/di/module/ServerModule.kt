@@ -13,9 +13,12 @@ class ServerModule : Module() {
 
     init {
         // Network
-        bind(OkHttpClient::class.java).toProvider(OkHttpClientProvider::class.java).providesSingletonInScope()
+        bind(OkHttpClient::class.java).toProvider(OkHttpClientProvider::class.java)
+            .providesSingletonInScope()
         bind(Gson::class.java).toProvider(GsonProvider::class.java).providesSingletonInScope()
-        bind(String::class.java).withName(Qualifiers.ServerPath::class.java).toInstance("")
-        bind(ServerApi::class.java).toProvider(ServerApiProvider::class.java).providesSingletonInScope()
+        bind(String::class.java).withName(Qualifiers.ServerPath::class.java)
+            .toInstance("https://api.themoviedb.org/3/movie/")
+        bind(ServerApi::class.java).toProvider(ServerApiProvider::class.java)
+            .providesSingletonInScope()
     }
 }

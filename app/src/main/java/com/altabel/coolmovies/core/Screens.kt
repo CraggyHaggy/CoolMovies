@@ -1,6 +1,5 @@
 package com.altabel.coolmovies.core
 
-import androidx.fragment.app.Fragment
 import com.altabel.coolmovies.ui.MoviesFlowFragment
 import com.altabel.coolmovies.ui.movies.MoviesContainerFragment
 import com.altabel.coolmovies.ui.movies.MoviesFragment
