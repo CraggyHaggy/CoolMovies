@@ -1,0 +1,46 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+apply from: "$project.rootDir/build_config/dependencies.gradle"
+apply from: "$project.rootDir/build_config/ktlint.gradle"
+
+android {
+    compileSdkVersion compileSdk
+    buildToolsVersion buildTools
+
+    defaultConfig {
+        applicationId "com.altabel.coolmovies"
+        minSdkVersion minSdk
+        targetSdkVersion targetSdk
+        versionCode 1
+        versionName "0.0.1"
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Kotlin
+    implementation(kotlin)
+    kapt kapt.values()
+
+    // AndroidX
+    implementation androidX.values()
+
+    // Moxy (MVP)
+    implementation moxy.values()
+
+    // Toothpick (DI)
+    implementation toothpick.values()
+
+    // Cicerone (Navigation)
+    implementation(cicerone)
+
+    // RxJava (Async)
+    implementation rx.values()
+
+    // Retrofit (Network)
+    implementation retrofit.values()
+}
