@@ -3,4 +3,7 @@
     <string name="network_error">Network error</string>
     <string name="timeout_error">Timeout error</string>
     <string name="unknown_error">Unknown error</string>
+    
+    <string name="movies_tab_title_popular">Popular</string>
+    <string name="movies_tab_title_favorite">Favorite</string>
 </resources>

@@ -5,6 +5,7 @@ ext {
     compileSdk = 28
 
     appСompat = '1.1.0-alpha02'
+    material = '1.1.0-alpha09'
     core = '1.1.0-alpha04'
     constraintLayout = '1.1.3'
 
@@ -27,6 +28,7 @@ ext {
             coreKtx         : "androidx.core:core-ktx:$core",
             constraintLayout: "androidx.constraintlayout:constraintlayout:$constraintLayout"
     ]
+    material = "com.google.android.material:material:$material"
 
     // TODO: moxy (Remove local mvp base classes and use from library).
     moxy = [

@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
 
 apply from: "$project.rootDir/build_config/dependencies.gradle"
 apply from: "$project.rootDir/build_config/ktlint.gradle"
@@ -28,6 +29,9 @@ dependencies {
 
     // AndroidX
     implementation androidX.values()
+
+    // Material components
+    implementation(material)
 
     // Moxy (MVP)
     implementation moxy.values()
