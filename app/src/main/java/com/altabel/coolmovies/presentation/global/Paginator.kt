@@ -61,6 +61,13 @@ class Paginator<T>(
 
     private inner class EMPTY : State<T> {
 
+        override fun restart() {
+            currentState = EMPTY_PROGRESS()
+            viewController.showEmptyView(false)
+            viewController.showEmptyProgress(true)
+            loadPage(FIRST_PAGE)
+        }
+
         override fun release() {
             currentState = RELEASED()
             disposeAll()

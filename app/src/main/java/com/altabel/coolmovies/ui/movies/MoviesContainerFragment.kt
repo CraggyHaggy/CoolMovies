@@ -2,6 +2,7 @@ package com.altabel.coolmovies.ui.movies
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentPagerAdapter
 import com.altabel.coolmovies.R
 import com.altabel.coolmovies.core.BaseFragment
@@ -37,17 +38,20 @@ class MoviesContainerFragment : BaseFragment() {
         BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
     ) {
 
-        override fun getItem(position: Int) = when (position) {
-            0 -> Screens.MoviesScreen(true).fragment
-            else -> Screens.MoviesScreen(false).fragment
+        override fun getItem(position: Int): Fragment {
+            return when (position) {
+                0 -> Screens.PopularMoviesScreen.fragment
+                else -> Screens.FavoriteMoviesScreen.fragment
+            }
         }
 
         override fun getCount() = 2
 
-        override fun getPageTitle(position: Int) = when (position) {
-            0 -> getString(R.string.movies_tab_title_popular)
-            1 -> getString(R.string.movies_tab_title_favorite)
-            else -> null
+        override fun getPageTitle(position: Int): String {
+            return when (position) {
+                0 -> getString(R.string.movies_tab_title_popular)
+                else -> getString(R.string.movies_tab_title_favorite)
+            }
         }
     }
 }

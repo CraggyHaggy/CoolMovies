@@ -3,8 +3,9 @@ package com.altabel.coolmovies.model.interactor
 import com.altabel.coolmovies.entity.ApiMovie
 import com.altabel.coolmovies.entity.FavoriteMovie
 import com.altabel.coolmovies.entity.Movie
+import javax.inject.Inject
 
-class MovieMapper {
+class MovieMapper @Inject constructor() {
 
     fun mapApiMovie(apiMovie: ApiMovie): Movie {
         return with(apiMovie) {
@@ -13,9 +14,9 @@ class MovieMapper {
                 popularity,
                 voteCount,
                 video,
-                posterPath,
+                "https://image.tmdb.org/t/p/w500$posterPath",
                 adult,
-                backdropPath,
+                "https://image.tmdb.org/t/p/w500$backdropPath",
                 originalLanguage,
                 originalTitle,
                 genreIds,

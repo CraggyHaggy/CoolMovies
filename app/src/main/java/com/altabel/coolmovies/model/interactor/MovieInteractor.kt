@@ -7,8 +7,9 @@ import com.altabel.coolmovies.model.system.scheduler.SchedulersProvider
 import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single
+import javax.inject.Inject
 
-class MovieInteractor(
+class MovieInteractor @Inject constructor(
     private val serverApi: ServerApi,
     private val favoriteMovieDao: FavoriteMovieDao,
     private val movieMapper: MovieMapper,

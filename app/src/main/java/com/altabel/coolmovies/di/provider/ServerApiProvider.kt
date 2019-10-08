@@ -1,8 +1,8 @@
 package com.altabel.coolmovies.di.provider
 
-import com.google.gson.Gson
-import com.altabel.coolmovies.di.Qualifiers
+import com.altabel.coolmovies.di.ServerPath
 import com.altabel.coolmovies.model.data.server.ServerApi
+import com.google.gson.Gson
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -13,7 +13,7 @@ import javax.inject.Provider
 class ServerApiProvider @Inject constructor(
     private val okHttpClient: OkHttpClient,
     private val gson: Gson,
-    @Qualifiers.ServerPath private val serverPath: String
+    @ServerPath private val serverPath: String
 ) : Provider<ServerApi> {
 
     override fun get(): ServerApi =

@@ -5,7 +5,7 @@ import java.util.*
 
 data class ApiMovie(
     @SerializedName("popularity")
-    val popularity: Int,
+    val popularity: Float,
     @SerializedName("vote_count")
     val voteCount: Int,
     @SerializedName("video")
@@ -27,7 +27,7 @@ data class ApiMovie(
     @SerializedName("title")
     val title: String,
     @SerializedName("vote_average")
-    val voteAverage: Int,
+    val voteAverage: Float,
     @SerializedName("overview")
     val overview: String,
     @SerializedName("release_date")

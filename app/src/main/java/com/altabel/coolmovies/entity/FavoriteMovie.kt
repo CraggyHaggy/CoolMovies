@@ -7,7 +7,7 @@ import java.util.*
 @Entity(tableName = "movies")
 data class FavoriteMovie(
     @PrimaryKey val id: Int,
-    val popularity: Int,
+    val popularity: Float,
     val voteCount: Int,
     val video: Boolean,
     val posterPath: String,
@@ -17,7 +17,7 @@ data class FavoriteMovie(
     val originalTitle: String,
     val genreIds: List<Int>,
     val title: String,
-    val voteAverage: Int,
+    val voteAverage: Float,
     val overview: String,
     val releaseDate: Date
 )
