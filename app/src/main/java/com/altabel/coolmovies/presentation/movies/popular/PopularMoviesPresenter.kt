@@ -41,7 +41,9 @@ class PopularMoviesPresenter @Inject constructor(
             }
 
             override fun showData(show: Boolean, data: List<Movie>) {
-                viewState.setMovies(data)
+                if (show) {
+                    viewState.setMovies(data)
+                }
             }
 
             override fun showPageProgress(show: Boolean) {

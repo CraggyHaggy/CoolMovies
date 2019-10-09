@@ -1,9 +1,11 @@
 package com.altabel.coolmovies.extension
 
+import android.content.Context
 import android.graphics.Color
 import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
+import android.util.DisplayMetrics
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
@@ -40,3 +42,6 @@ fun Fragment.showSnackMessage(message: String) {
 fun View.visible(visible: Boolean) {
     this.visibility = if (visible) View.VISIBLE else View.GONE
 }
+
+fun Context.dpToPx(dp: Float) =
+    Math.round(dp * (resources.displayMetrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT))

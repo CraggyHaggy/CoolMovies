@@ -33,6 +33,9 @@ dependencies {
     // Material components
     implementation(material)
 
+    // Image loading
+    implementation(glide)
+
     // Moxy (MVP)
     implementation moxy.values()
 

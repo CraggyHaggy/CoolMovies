@@ -6,6 +6,7 @@
 
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
+    <color name="gray">#727171</color>
     <color name="electric_violet">#AA00FF</color>
     <color name="purple">#7200CA</color>
     <color name="heliotrope">#E254FF</color>

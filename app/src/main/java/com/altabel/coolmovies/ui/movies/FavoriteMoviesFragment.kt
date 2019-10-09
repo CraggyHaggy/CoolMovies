@@ -1,5 +1,9 @@
 package com.altabel.coolmovies.ui.movies
 
+import android.os.Bundle
+import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.altabel.coolmovies.R
 import com.altabel.coolmovies.core.BaseFragment
 import com.altabel.coolmovies.entity.Movie
@@ -29,6 +33,16 @@ class FavoriteMoviesFragment : BaseFragment(), FavoriteMoviesView {
     )
 
     private val movieAdapter = MovieAdapter({})
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        with(recyclerView) {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+            adapter = movieAdapter
+        }
+    }
 
     override fun showEmptyProgress(visible: Boolean) {
         emptyProgress.visible(visible)
