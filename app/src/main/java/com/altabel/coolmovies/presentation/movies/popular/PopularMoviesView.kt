@@ -9,12 +9,11 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 @StateStrategyType(AddToEndSingleStrategy::class)
 interface PopularMoviesView : MvpView {
 
-    fun showRefreshProgress(show: Boolean)
-    fun showEmptyProgress(show: Boolean)
-    fun showPageProgress(show: Boolean)
-    fun showEmptyView(show: Boolean)
-    fun showEmptyError(show: Boolean, message: String?)
-    fun showMovies(show: Boolean, movies: List<Movie>)
+    fun showEmptyProgress(visible: Boolean)
+    fun showPageProgress(visible: Boolean)
+    fun showEmptyView(visible: Boolean)
+    fun showEmptyError(visible: Boolean, message: String?)
+    fun setMovies(movies: List<Movie>)
 
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun showMessage(message: String)
