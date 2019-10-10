@@ -1,5 +1,6 @@
 package com.altabel.coolmovies.entity
 
+import java.io.Serializable
 import java.util.*
 
 data class Movie(
@@ -17,4 +18,4 @@ data class Movie(
     val voteAverage: Float,
     val overview: String,
     val releaseDate: Date
-)
+) : Serializable

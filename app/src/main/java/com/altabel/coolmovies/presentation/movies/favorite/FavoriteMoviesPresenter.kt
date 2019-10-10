@@ -3,6 +3,8 @@ package com.altabel.coolmovies.presentation.movies.favorite
 import com.altabel.coolmovies.core.BasePresenter
 import com.altabel.coolmovies.core.ErrorHandler
 import com.altabel.coolmovies.core.FlowRouter
+import com.altabel.coolmovies.core.Screens
+import com.altabel.coolmovies.entity.Movie
 import com.altabel.coolmovies.model.interactor.MovieInteractor
 import com.arellomobile.mvp.InjectViewState
 import javax.inject.Inject
@@ -49,5 +51,9 @@ class FavoriteMoviesPresenter @Inject constructor(
                 }
             )
             .connect()
+    }
+
+    fun onMovieClicked(movie: Movie) {
+        flowRouter.navigateTo(Screens.MovieDetailsScreen(movie))
     }
 }

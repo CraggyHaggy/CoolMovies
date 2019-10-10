@@ -3,6 +3,7 @@ package com.altabel.coolmovies.presentation.movies.popular
 import com.altabel.coolmovies.core.BasePresenter
 import com.altabel.coolmovies.core.ErrorHandler
 import com.altabel.coolmovies.core.FlowRouter
+import com.altabel.coolmovies.core.Screens
 import com.altabel.coolmovies.entity.Movie
 import com.altabel.coolmovies.model.interactor.MovieInteractor
 import com.altabel.coolmovies.presentation.global.Paginator
@@ -62,5 +63,9 @@ class PopularMoviesPresenter @Inject constructor(
         super.onDestroy()
 
         paginator.release()
+    }
+
+    fun onMovieClicked(movie: Movie) {
+        flowRouter.navigateTo(Screens.MovieDetailsScreen(movie))
     }
 }

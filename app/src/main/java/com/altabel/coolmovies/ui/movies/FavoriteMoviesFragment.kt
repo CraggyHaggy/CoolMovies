@@ -32,7 +32,7 @@ class FavoriteMoviesFragment : BaseFragment(), FavoriteMoviesView {
         FavoriteMoviesPresenter::class.java
     )
 
-    private val movieAdapter = MovieAdapter({})
+    private val movieAdapter = MovieAdapter { presenter.onMovieClicked(it) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
