@@ -16,13 +16,44 @@ class MovieDetailsPresenter @Inject constructor(
     private val errorHandler: ErrorHandler
 ) : BasePresenter<MovieDetailsView>() {
 
+    private var isFavorite = false
+
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
 
         viewState.setMovie(movie)
         interactor.isMovieFavorite(movie.id)
             .subscribe(
-                { viewState.setFavoriteState(it) },
+                {
+                    isFavorite = it
+                    viewState.setFavoriteState(it)
+                },
+                { throwable -> errorHandler.handleError(throwable) { viewState.showMessage(it) } }
+            )
+            .connect()
+    }
+
+    fun onFavoriteClicked() {
+        if (isFavorite) {
+            removeFavorite()
+        } else {
+            saveFavorite()
+        }
+    }
+
+    private fun saveFavorite() {
+        interactor.saveFavoriteMovie(movie)
+            .subscribe(
+                {},
+                { throwable -> errorHandler.handleError(throwable) { viewState.showMessage(it) } }
+            )
+            .connect()
+    }
+
+    private fun removeFavorite() {
+        interactor.removeFavoriteMovie(movie)
+            .subscribe(
+                {},
                 { throwable -> errorHandler.handleError(throwable) { viewState.showMessage(it) } }
             )
             .connect()

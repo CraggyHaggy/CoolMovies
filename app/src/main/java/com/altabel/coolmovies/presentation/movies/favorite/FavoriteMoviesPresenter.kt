@@ -35,11 +35,11 @@ class FavoriteMoviesPresenter @Inject constructor(
                     }
 
                     if (movies.isNotEmpty()) {
-                        viewState.setMovies(movies)
                         viewState.showEmptyView(false)
                     } else {
                         viewState.showEmptyView(true)
                     }
+                    viewState.setMovies(movies)
                 },
                 { throwable ->
                     if (isFirstEmit) {

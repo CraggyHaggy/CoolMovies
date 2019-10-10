@@ -1,6 +1,7 @@
 package com.altabel.coolmovies.ui.details
 
 import android.os.Bundle
+import android.view.View
 import com.altabel.coolmovies.R
 import com.altabel.coolmovies.core.BaseFragment
 import com.altabel.coolmovies.entity.Movie
@@ -40,6 +41,13 @@ class MovieDetailsFragment : BaseFragment(), MovieDetailsView {
     @ProvidePresenter
     fun providePresenter(): MovieDetailsPresenter =
         scope.getInstance(MovieDetailsPresenter::class.java)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        toolbar.setNavigationOnClickListener { presenter.onBackPressed() }
+        favoriteButton.setOnClickListener { presenter.onFavoriteClicked() }
+    }
 
     override fun onBackPressed() {
         presenter.onBackPressed()
