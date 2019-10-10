@@ -6,6 +6,7 @@ apply plugin: 'kotlin-android-extensions'
 
 apply from: "$project.rootDir/build_config/dependencies.gradle"
 apply from: "$project.rootDir/build_config/ktlint.gradle"
+apply from: "$project.rootDir/build_config/keystore_properties.gradle"
 
 android {
     compileSdkVersion compileSdk
@@ -17,6 +18,25 @@ android {
         targetSdkVersion targetSdk
         versionCode 1
         versionName "1.0.0"
+    }
+
+    signingConfigs {
+        debug {
+            storeFile keystoreFile
+            storePassword keystoreProperties['storePassword']
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+        }
+
+        release {
+        }
     }
 }
 
