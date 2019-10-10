@@ -16,7 +16,13 @@ abstract class FlowFragment : BaseFragment() {
 
     override val parentFragmentScopeName = DI.SERVER_SCOPE
 
-    protected val navigator by lazy { SupportAppNavigator(activity, childFragmentManager, R.id.flowContainer_fl) }
+    protected val navigator by lazy {
+        SupportAppNavigator(
+            activity,
+            childFragmentManager,
+            R.id.flowContainer_fl
+        )
+    }
 
     private val currentFragment
         get() = childFragmentManager.findFragmentById(R.id.flowContainer_fl) as? BaseFragment

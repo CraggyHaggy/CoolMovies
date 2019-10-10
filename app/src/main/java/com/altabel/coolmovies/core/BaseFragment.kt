@@ -24,7 +24,8 @@ abstract class BaseFragment : MvpAppCompatFragment() {
     private var isInstanceStateSaved: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        fragmentScopeName = savedInstanceState?.getString(STATE_FRAGMENT_SCOPE_NAME) ?: simpleFragmentScopeName()
+        fragmentScopeName =
+            savedInstanceState?.getString(STATE_FRAGMENT_SCOPE_NAME) ?: simpleFragmentScopeName()
         val areScopeModulesInstalled = Toothpick.isScopeOpen(fragmentScopeName)
         scope = Toothpick.openScopes(parentFragmentScopeName, fragmentScopeName).apply {
             if (!areScopeModulesInstalled) {
@@ -36,7 +37,11 @@ abstract class BaseFragment : MvpAppCompatFragment() {
         super.onCreate(savedInstanceState)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View =
         inflater.inflate(layoutRes, container, false)
 
     override fun onResume() {
