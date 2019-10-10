@@ -10,7 +10,7 @@ The application is created using Clean Architecture and Single Activity flow (Fr
 4) Toothpick - Dependency Injection library (With hierarchical scope logic).
 5) Cicerone - Fragment-orientated navigation library (With command queue feature).
 6) RxJava - Data-flow library to work with asyncronius tasks.
-7) Retrofit + OkHttpLibary.
+7) Retrofit + OkHttp - libary.
 8) Room - local database to keep favorite movies.
 
 # Pagination
