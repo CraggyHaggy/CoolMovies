@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.altabel.coolmovies.R
 import com.altabel.coolmovies.core.BaseFragment
 import com.altabel.coolmovies.entity.Movie
 import com.altabel.coolmovies.extension.dpToPx
@@ -21,7 +20,7 @@ import toothpick.Scope
 
 class PopularMoviesFragment : BaseFragment(), PopularMoviesView {
 
-    override val layoutRes = R.layout.fragment_popular_movies
+    override val layoutRes = com.altabel.coolmovies.R.layout.fragment_popular_movies
 
     override fun installScopeModules(scope: Scope) {
     }
@@ -43,6 +42,18 @@ class PopularMoviesFragment : BaseFragment(), PopularMoviesView {
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             addItemDecoration(SpaceItemDecoration(context.dpToPx(16f)))
             adapter = movieAdapter
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    val linearLayoutManager = layoutManager as LinearLayoutManager
+                    val lastVisiblePosition = linearLayoutManager.findLastVisibleItemPosition()
+                    val itemCount = linearLayoutManager.itemCount - 1
+
+                    if (lastVisiblePosition == itemCount) {
+                        presenter.onMoviesScrolledToEnd()
+                    }
+                }
+            })
         }
     }
 
@@ -56,14 +67,14 @@ class PopularMoviesFragment : BaseFragment(), PopularMoviesView {
 
     override fun showEmptyView(visible: Boolean) {
         if (visible) {
-            emptyView.text = getString(R.string.empty_data_description)
+            emptyView.text = getString(com.altabel.coolmovies.R.string.empty_data_description)
         }
         emptyView.visible(visible)
     }
 
     override fun showEmptyError(visible: Boolean, message: String?) {
         if (visible) {
-            emptyView.text = getString(R.string.empty_data_description)
+            emptyView.text = getString(com.altabel.coolmovies.R.string.empty_data_description)
         }
         emptyView.visible(visible)
     }

@@ -65,6 +65,10 @@ class PopularMoviesPresenter @Inject constructor(
         paginator.release()
     }
 
+    fun onMoviesScrolledToEnd() {
+        paginator.loadNewPage()
+    }
+
     fun onMovieClicked(movie: Movie) {
         flowRouter.navigateTo(Screens.MovieDetailsScreen(movie))
     }
