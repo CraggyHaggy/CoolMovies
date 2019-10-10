@@ -7,8 +7,11 @@ import io.reactivex.Observable
 @Dao
 interface FavoriteMovieDao {
 
-    @Query("SELECT * from movies")
+    @Query("select * from movies")
     fun getAll(): Observable<List<FavoriteMovie>>
+
+    @Query("select COUNT() from movies where id == :id")
+    fun isMovieFavorite(id: Int): Observable<Boolean>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(movie: FavoriteMovie)

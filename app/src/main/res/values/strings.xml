@@ -6,6 +6,11 @@
     
     <string name="movies_tab_title_popular">Popular</string>
     <string name="movies_tab_title_favorite">Favorite</string>
+    
+    <string name="movie_vote_count">Vote count: %d</string>
+    <string name="movie_release_date">Release date: %s</string>
+    <string name="movie_popularity">Popularity: %.2f</string>
+    <string name="movie_vote_average">Vote average: %.1f</string>
 
     <string name="empty_error_description">Something went wrong.\nPlease try again later.</string>
     <string name="empty_data_description">You have not data yet.\nPlease try again later.</string>

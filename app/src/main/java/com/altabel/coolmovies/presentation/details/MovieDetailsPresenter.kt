@@ -16,6 +16,18 @@ class MovieDetailsPresenter @Inject constructor(
     private val errorHandler: ErrorHandler
 ) : BasePresenter<MovieDetailsView>() {
 
+    override fun onFirstViewAttach() {
+        super.onFirstViewAttach()
+
+        viewState.setMovie(movie)
+        interactor.isMovieFavorite(movie.id)
+            .subscribe(
+                { viewState.setFavoriteState(it) },
+                { throwable -> errorHandler.handleError(throwable) { viewState.showMessage(it) } }
+            )
+            .connect()
+    }
+
     fun onBackPressed() {
         flowRouter.exit()
     }

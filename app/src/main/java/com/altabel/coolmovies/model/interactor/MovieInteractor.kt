@@ -30,6 +30,12 @@ class MovieInteractor @Inject constructor(
             .subscribeOn(schedulesProvider.io())
             .observeOn(schedulesProvider.ui())
 
+    fun isMovieFavorite(id: Int): Observable<Boolean> =
+        favoriteMovieDao
+            .isMovieFavorite(id)
+            .subscribeOn(schedulesProvider.io())
+            .observeOn(schedulesProvider.ui())
+
     fun saveFavoriteMovie(movie: Movie) =
         Completable
             .fromAction { favoriteMovieDao.insert(movieMapper.mapMovie(movie)) }

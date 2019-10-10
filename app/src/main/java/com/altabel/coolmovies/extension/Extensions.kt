@@ -13,6 +13,8 @@ import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 import ru.terrakok.cicerone.commands.BackTo
 import ru.terrakok.cicerone.commands.Replace
+import java.text.SimpleDateFormat
+import java.util.*
 
 fun Navigator.setLaunchScreen(screen: SupportAppScreen) {
 
@@ -45,3 +47,5 @@ fun View.visible(visible: Boolean) {
 
 fun Context.dpToPx(dp: Float) =
     Math.round(dp * (resources.displayMetrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT))
+
+fun Date.formatUi() = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault()).format(time)
