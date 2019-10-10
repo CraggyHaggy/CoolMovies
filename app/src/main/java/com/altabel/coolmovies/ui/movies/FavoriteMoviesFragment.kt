@@ -48,6 +48,20 @@ class FavoriteMoviesFragment : BaseFragment(), FavoriteMoviesView {
         emptyProgress.visible(visible)
     }
 
+    override fun showEmptyView(visible: Boolean) {
+        if (visible) {
+            emptyView.text = getString(R.string.empty_data_description)
+        }
+        emptyView.visible(visible)
+    }
+
+    override fun showEmptyError(visible: Boolean) {
+        if (visible) {
+            emptyView.text = getString(R.string.empty_error_description)
+        }
+        emptyView.visible(visible)
+    }
+
     override fun setMovies(movies: List<Movie>) {
         movieAdapter.setItems(movies)
     }

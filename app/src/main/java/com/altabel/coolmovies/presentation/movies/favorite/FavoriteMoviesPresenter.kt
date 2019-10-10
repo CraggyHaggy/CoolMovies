@@ -21,15 +21,32 @@ class FavoriteMoviesPresenter @Inject constructor(
 
         interactor.getFavoriteMovies()
             .doOnSubscribe { viewState.showEmptyProgress(true) }
-            .doAfterNext {
+            .doOnNext {
                 if (isFirstEmit) {
                     viewState.showEmptyProgress(false)
-                    isFirstEmit = false
                 }
             }
             .subscribe(
-                { viewState.setMovies(it) },
-                { throwable -> errorHandler.handleError(throwable) { viewState.showMessage(it) } }
+                { movies ->
+                    if (isFirstEmit) {
+                        isFirstEmit = false
+                    }
+
+                    if (movies.isNotEmpty()) {
+                        viewState.setMovies(movies)
+                        viewState.showEmptyView(false)
+                    } else {
+                        viewState.showEmptyView(true)
+                    }
+                },
+                { throwable ->
+                    if (isFirstEmit) {
+                        viewState.showEmptyError(true)
+                        isFirstEmit = false
+                    } else {
+                        errorHandler.handleError(throwable) { viewState.showMessage(it) }
+                    }
+                }
             )
             .connect()
     }

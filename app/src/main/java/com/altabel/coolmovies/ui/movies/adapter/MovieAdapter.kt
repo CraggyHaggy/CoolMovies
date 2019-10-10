@@ -43,7 +43,6 @@ class MovieAdapter(
         }
     }
 
-
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is MovieViewHolder) {
             holder.bind(items[position] as Movie)

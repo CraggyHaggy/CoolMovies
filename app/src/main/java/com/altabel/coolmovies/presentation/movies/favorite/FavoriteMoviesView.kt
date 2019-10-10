@@ -10,7 +10,8 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 interface FavoriteMoviesView : MvpView {
 
     fun setMovies(movies: List<Movie>)
-
+    fun showEmptyView(visible: Boolean)
+    fun showEmptyError(visible: Boolean)
     fun showEmptyProgress(visible: Boolean)
 
     @StateStrategyType(OneExecutionStateStrategy::class)
